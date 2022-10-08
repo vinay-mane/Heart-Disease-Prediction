@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="input">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+    <input type="number" name="" id="inp">
+  </div>
+  <button id="smt">Submit</button>
+  <button id="rn">Random</button>
+  <div id="output">output</div>
+</body>
+
+
+<script>
+  const btn=document.querySelector('#smt')
+  const inp = document.querySelectorAll('#inp')
+  const op = document.querySelector('#output')
+  const rn = document.querySelector('#rn')
+  let data=[]
+  let count=0;
+  let tx=''
+
+
+  btn.addEventListener('click',()=>{
+    data=[]
+    inp.forEach(element => {
+      data.push(element.value)
+    });
+    tx = '{"data": ['+data.toString()+']}'
+    call()
+  })
+
+  rn.addEventListener('click',()=>{
+    const a=[[63,1,3,145,233,1,0,150,0,2.3,0,0,1],[51,1,0,140,298,0,1,122,1,4.2,1,3,3]]
+
+    inp.forEach( (element,i) => {
+    element.value= Number(a[count++][i])
+    count=count%2
+    });
+  })
+
+  const call = async()=>{
+    const response = await fetch("http://127.0.0.1:5000/pred", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: tx,
+    });
+    response.json().then(data => {
+      console.log(data)
+      op.firstChild.data=data['status']
+    });
+  }
+
+  
+</script>
+</html>

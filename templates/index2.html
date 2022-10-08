@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+      <div class="details">
+          <div class="heading">Boston House Price Prediction</div>
+      </div>
+
+      <div class="form-here">
+          <form action="{{ url_for('predict')}}"method="post" class="form-actual">
+              <div class="form-cont-label">
+
+                  <h3>Enter the following details</h3>
+                  <div class="label">
+                      <span>1</span>
+                      <input type="text" name="CRIM"  required="required" class="input" /><br>
+                  </div>
+          
+                  <div class="label">
+                      <span>2</span> 
+                      <input type="text" name="ZN"  required="required" class="input"/><br>
+                  </div>
+                  
+                  <div class="label">
+                      <span>3</span>
+                      <input type="text" name="INDUS"  required="required" class="input"/><br>
+                  </div>
+              
+                  <div class="label">
+                      <span>4</span> 
+                      <input type="text" name="CHAS"  required="required" class="input"/><br>
+                  </div>
+              
+                  <div class="label">
+                      <span>5</span> 
+                      <input type="text" name="NOX" required="required" class="input"/><br>
+                  </div>
+
+                  <div class="label">
+                      <span>6</span> 
+                      <input type="text" name="RM"  required="required" class="input"/><br>
+                  </div>
+
+                  <div class="label">
+                      <span>7</span> 
+                      <input type="text" name="Age"  required="required" class="input"/><br>
+                  </div>
+
+                  <div class="label">
+                      <span>8</span> 
+                      <input type="text" name="DIS"  required="required" class="input"/><br>
+                  </div>
+
+                  <div class="label">
+                      <span>9</span> 
+                      <input type="text" name="RAD"  required="required" class="input"/><br>
+                  </div>
+
+                  <div class="label">
+                      <span>10</span> 
+                      <input type="text" name="TAX"  required="required" class="input"/><br>
+                  </div>
+
+                  <div class="label">
+                      <span>11</span> 
+                      <input type="text" name="PTRATIO" required="required" class="input"/><br>
+                  </div>
+
+                  <div class="label">
+                      <span>12</span> 
+                      <input type="text" name="B"  required="required" class="input"/><br>
+                  </div>
+
+                  <div class="label">
+                      <span>13</span> 
+                      <input type="text" name="LSTAT"  required="required" class="input"/><br>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-block btn-large">Calculate Price!</button>
+              </div>
+          </form>
+      </div>
+      <div class="pred">
+          {{prediction_text}}
+      </div>
+
+</html>
